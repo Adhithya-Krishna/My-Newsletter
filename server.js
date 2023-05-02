@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
 
+//url -https://sub4newsletter-byadhi.cyclic.app
+
 const client = require("@mailchimp/mailchimp_marketing");
 
 client.setConfig({
-    apiKey: "1385e4ad63d276c0bd4e2376292426bb-us17",
-    server: "us17",
+    apiKey: "API_KEY",
+    server: "SERVER_ID",
   });
 
 //To add css to the web page using express
@@ -32,7 +34,7 @@ app.post("/",(req,res)=>{
 
     const run = async () => {
         try{
-            const response = await client.lists.addListMember("6ce93e0cdb", {
+            const response = await client.lists.addListMember("LIST_ID", {
             email_address: subscriber.email,
             status: "subscribed",
             merge_fields:{
